@@ -29,7 +29,10 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button id="phone-minus" class="btn btn-default">
+                    <button
+                      onclick="handlePhoneChange(false)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -38,7 +41,10 @@
                       class="form-control text-center"
                       value="1"
                     />
-                    <button id="phone-plus" class="btn btn-default">
+                    <button
+                      onclick="handlePhoneChange(true)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -138,23 +144,23 @@
       }
 
       //Phone Section
-      document
-        .getElementById("phone-plus")
-        .addEventListener("click", function () {
-          //  const phoneInput = document.getElementById("phone-count");
-          //  const phoneCount = parseInt(phoneInput.value);
-          //  const phoneNewCount = phoneCount + 1;
-          //  phoneInput.value = phoneNewCount;
+      // document
+      //   .getElementById("phone-plus")
+      //   .addEventListener("click", function () {
+      //     //  const phoneInput = document.getElementById("phone-count");
+      //     //  const phoneCount = parseInt(phoneInput.value);
+      //     //  const phoneNewCount = phoneCount + 1;
+      //     //  phoneInput.value = phoneNewCount;
 
-          //  const phoneTotal = phoneNewCount * 1219;
-          //  document.getElementById("phone-total").innerText = phoneTotal;
-          handlePhoneChange(true);
-        });
-      document
-        .getElementById("phone-minus")
-        .addEventListener("click", function () {
-          handlePhoneChange(false);
-        });
+      //     //  const phoneTotal = phoneNewCount * 1219;
+      //     //  document.getElementById("phone-total").innerText = phoneTotal;
+      //     handlePhoneChange(true);
+      //   });
+      // document
+      //   .getElementById("phone-minus")
+      //   .addEventListener("click", function () {
+      //     handlePhoneChange(false);
+      //   });
       function handlePhoneChange(isIncrease) {
         const phoneInput = document.getElementById("phone-count");
         const phoneCount = parseInt(phoneInput.value);
