@@ -141,25 +141,36 @@
       document
         .getElementById("phone-plus")
         .addEventListener("click", function () {
-          const phoneInput = document.getElementById("phone-count");
-          const phoneCount = parseInt(phoneInput.value);
-          const phoneNewCount = phoneCount + 1;
-          phoneInput.value = phoneNewCount;
+          //  const phoneInput = document.getElementById("phone-count");
+          //  const phoneCount = parseInt(phoneInput.value);
+          //  const phoneNewCount = phoneCount + 1;
+          //  phoneInput.value = phoneNewCount;
 
-          const phoneTotal = phoneNewCount * 1219;
-          document.getElementById("phone-total").innerText = phoneTotal;
+          //  const phoneTotal = phoneNewCount * 1219;
+          //  document.getElementById("phone-total").innerText = phoneTotal;
+          handlePhoneChange(true);
         });
       document
         .getElementById("phone-minus")
         .addEventListener("click", function () {
-          const phoneInput = document.getElementById("phone-count");
-          const phoneCount = parseInt(phoneInput.value);
-          const phoneNewCount = phoneCount - 1;
-          phoneInput.value = phoneNewCount;
-
-          const phoneTotal = phoneNewCount * 1219;
-          document.getElementById("phone-total").innerText = phoneTotal;
+          handlePhoneChange(false);
         });
+      function handlePhoneChange(isIncrease) {
+        const phoneInput = document.getElementById("phone-count");
+        const phoneCount = parseInt(phoneInput.value);
+        //const phoneNewCount = phoneCount - 1;
+        let phoneNewCount = phoneCount;
+        if (isIncrease == true) {
+          phoneNewCount = phoneCount + 1;
+        }
+        if (isIncrease == false && phoneCount > 0) {
+          phoneNewCount = phoneCount - 1;
+        }
+        phoneInput.value = phoneNewCount;
+
+        const phoneTotal = phoneNewCount * 1219;
+        document.getElementById("phone-total").innerText = phoneTotal;
+      }
     </script>
   </body>
 </html>
