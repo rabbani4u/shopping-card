@@ -29,15 +29,16 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button class="btn btn-default">
+                    <button id="phone-minus" class="btn btn-default">
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
+                      id="phone-count"
                       type="text"
                       class="form-control text-center"
                       value="1"
                     />
-                    <button class="btn btn-default">
+                    <button id="phone-plus" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -55,19 +56,20 @@
                 </div>
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button class="btn btn-default">
+                    <button id="case-minus" class="btn btn-default">
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
+                      id="case-count"
                       type="text"
                       class="form-control text-center"
                       value="1"
                     />
-                    <button class="btn btn-default">
+                    <button id="case-plus" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5>$59</h5>
+                  <h5>$<span id="case-total">59</span></h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -98,11 +100,34 @@
       </div>
     </section>
     <script>
-      const count = 0;
-      const addBtn = document.querySelector(".fa-plus");
-      addBtn.addEventListener("click", function () {
-        console.log(count + 1);
-      });
+      document
+        .getElementById("case-plus")
+        .addEventListener("click", function () {
+          handleProductChange(true);
+        });
+
+      document
+        .getElementById("case-minus")
+        .addEventListener("click", function () {
+          handleProductChange(false);
+        });
+      function handleProductChange(isIncrease) {
+        const caseInput = document.getElementById("case-count");
+        const caseCount = parseInt(caseInput.value);
+
+        //const newCount = caseCount - 1;
+        let newCount = caseCount;
+        if (isIncrease == true) {
+          newCount = caseCount + 1;
+        }
+        if (isIncrease == false && caseCount > 0) {
+          newCount = caseCount - 1;
+        }
+
+        caseInput.value = newCount;
+        const caseTotal = newCount * 59;
+        document.getElementById("case-total").innerText = caseTotal;
+      }
     </script>
   </body>
 </html>
