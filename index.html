@@ -42,7 +42,7 @@
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5>$1219</h5>
+                  <h5>$ <span id="phone-total">1219</span></h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -56,7 +56,10 @@
                 </div>
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button id="case-minus" class="btn btn-default">
+                    <button
+                      onclick="handleProductChange(false)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -65,7 +68,10 @@
                       class="form-control text-center"
                       value="1"
                     />
-                    <button id="case-plus" class="btn btn-default">
+                    <button
+                      onclick="handleProductChange(true)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -100,17 +106,19 @@
       </div>
     </section>
     <script>
-      document
-        .getElementById("case-plus")
-        .addEventListener("click", function () {
-          handleProductChange(true);
-        });
+      // document
+      //   .getElementById("case-plus")
+      //   .addEventListener("click", function () {
+      //     handleProductChange(true);
+      //   });
 
-      document
-        .getElementById("case-minus")
-        .addEventListener("click", function () {
-          handleProductChange(false);
-        });
+      // document
+      //   .getElementById("case-minus")
+      //   .addEventListener("click", function () {
+      //     handleProductChange(false);
+      //   });
+
+      //Case section
       function handleProductChange(isIncrease) {
         const caseInput = document.getElementById("case-count");
         const caseCount = parseInt(caseInput.value);
@@ -128,6 +136,30 @@
         const caseTotal = newCount * 59;
         document.getElementById("case-total").innerText = caseTotal;
       }
+
+      //Phone Section
+      document
+        .getElementById("phone-plus")
+        .addEventListener("click", function () {
+          const phoneInput = document.getElementById("phone-count");
+          const phoneCount = parseInt(phoneInput.value);
+          const phoneNewCount = phoneCount + 1;
+          phoneInput.value = phoneNewCount;
+
+          const phoneTotal = phoneNewCount * 1219;
+          document.getElementById("phone-total").innerText = phoneTotal;
+        });
+      document
+        .getElementById("phone-minus")
+        .addEventListener("click", function () {
+          const phoneInput = document.getElementById("phone-count");
+          const phoneCount = parseInt(phoneInput.value);
+          const phoneNewCount = phoneCount - 1;
+          phoneInput.value = phoneNewCount;
+
+          const phoneTotal = phoneNewCount * 1219;
+          document.getElementById("phone-total").innerText = phoneTotal;
+        });
     </script>
   </body>
 </html>
