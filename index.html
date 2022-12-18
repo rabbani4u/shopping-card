@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="col-md-4 status">
-                  <h5>$1,278</h5>
+                  <h5>$ <span id="subtotal">1,278</span></h5>
                   <h5>$0</h5>
                   <h5>$1,278</h5>
                 </div>
@@ -141,6 +141,7 @@
         caseInput.value = newCount;
         const caseTotal = newCount * 59;
         document.getElementById("case-total").innerText = caseTotal;
+        calculateTotal();
       }
 
       //Phone Section
@@ -176,6 +177,18 @@
 
         const phoneTotal = phoneNewCount * 1219;
         document.getElementById("phone-total").innerText = phoneTotal;
+        calculateTotal();
+      }
+      //Total Section
+      function calculateTotal() {
+        const caseInput = document.getElementById("case-count");
+        const caseCount = parseInt(caseInput.value);
+
+        const phoneInput = document.getElementById("phone-count");
+        const phoneCount = parseInt(phoneInput.value);
+
+        const totalPrice = phoneCount * 1219 + caseCount * 59;
+        document.getElementById("subtotal").innerText = totalPrice;
       }
     </script>
   </body>
